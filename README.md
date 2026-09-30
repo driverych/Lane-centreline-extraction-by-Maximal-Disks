@@ -26,7 +26,20 @@ maximal-disk lane-centerline extraction method described in:
 
 The real-world maps used in the paper originated from the
 [inD](https://levelxdata.com/ind-dataset/) and
-[rounD](https://levelxdata.com/round-dataset/) datasets. Their terms prohibit
+[rounD](https://levelxdata.com/round-dataset/) datasets. 
+
+<p align="center">
+  <img src="docs/illustration.png"
+       alt="Lane centerline extraction from synthetic boundaries using maximal disks"
+       width="850">
+</p>
+
+<p align="center">
+  <em>Lane centerline extraction from synthetic surveyed boundaries using maximal disks.</em>
+</p>
+
+
+Their terms prohibit
 redistribution of the datasets or modified versions. Consequently:
 
 - the original Lanelet2 maps are not included;
