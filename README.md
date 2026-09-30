@@ -58,40 +58,13 @@ synthetic workflow were additionally checked with MATLAB R2025b.
 
 ## Quick start with the synthetic data
 
-Start MATLAB in the repository root and run:
-
-```matlab
-repoRoot = pwd;
-algorithmRoot = fullfile(repoRoot, ...
-    '3_centrelineCalculation', 'maximalDisks');
-
-addpath(genpath(algorithmRoot));
-
-inputFile = fullfile(repoRoot, '0_data', 'LaneletData', ...
-    'laneList_dummy.mat');
-load(inputFile, 'laneList');
-
-utmOrigin.x = 0;
-utmOrigin.y = 0;
-discretInfo.isCnlDiscret = 1;
-discretInfo.cnlDiscretStep = 0.4; % metres
-
-[laneListWithCentreline, circlesConnected] = ...
-    calculateCentreline_MaximalDisk_sixCases( ...
-        laneList, discretInfo, utmOrigin);
-
-% Optional: visualise the dummy lanes and maximal disks.
-plotCentreline_MaximalDisk_dummy(laneListWithCentreline, utmOrigin);
-```
-
-The dummy plotting function uses the generated lane boundaries directly and does
-not require an `alignedLanelet` map object.
-
-`main_calculateCentreline_MD.m` is an editable research driver whose input,
+Direct the directory to `3_centrelineCalculation/maximalDisks` and run 
+`main_calculateCentreline_MD.m`. This main script is an editable research driver whose input,
 coordinate origin, plotting data, discretisation setting, and output filename
-must be configured consistently for the selected scenario. It also expects
-MATLAB's current folder to be
-`3_centrelineCalculation/maximalDisks`.
+must be configured consistently for the selected scenario.
+
+The dummy plotting function `plotCentreline_MaximalDisk_dummy` uses the generated lane boundaries directly and does
+not require an `alignedLanelet` map object.
 
 ## Input format
 
