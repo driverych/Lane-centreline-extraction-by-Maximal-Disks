@@ -58,13 +58,9 @@ synthetic workflow were additionally checked with MATLAB R2025b.
 
 ## Quick start with the synthetic data
 
-Direct the directory to `3_centrelineCalculation/maximalDisks` and run 
-`main_calculateCentreline_MD.m`. This main script is an editable research driver whose input,
-coordinate origin, plotting data, discretisation setting, and output filename
-must be configured consistently for the selected scenario.
+Set the MATLAB current folder to `3_centrelineCalculation/maximalDisks`, then run `main_calculateCentreline_MD.m`. This script is an editable research driver. Its input data, coordinate origin, plotting configuration, discretisation settings, and output filename must be configured consistently for the selected scenario.
 
-The dummy plotting function `plotCentreline_MaximalDisk_dummy` uses the generated lane boundaries directly and does
-not require an `alignedLanelet` map object.
+For the synthetic demo, `plotCentreline_MaximalDisk_dummy` visualises the generated lane boundaries directly and does not require an `alignedLanelet` map object.
 
 ## Input format
 
