@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software or its synthetic demonstration data, please cite
+  the associated Sensors paper.
+title: Lane Centerline Extraction from Surveyed Boundaries
+type: software
+version: 1.0.0
+license: MIT
+authors:
+  - family-names: Yin
+    given-names: Chenhui
+  - family-names: Cecotti
+    given-names: Marco
+  - family-names: Auger
+    given-names: Daniel J.
+  - family-names: Fotouhi
+    given-names: Abbas
+  - family-names: Jiang
+    given-names: Haobin
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Yin
+      given-names: Chenhui
+    - family-names: Cecotti
+      given-names: Marco
+    - family-names: Auger
+      given-names: Daniel J.
+    - family-names: Fotouhi
+      given-names: Abbas
+    - family-names: Jiang
+      given-names: Haobin
+  title: >-
+    Lane Centerline Extraction Based on Surveyed Boundaries: An Efficient
+    Approach Using Maximal Disks
+  journal: Sensors
+  year: 2025
+  month: 4
+  volume: 25
+  issue: 8
+  doi: 10.3390/s25082571
+  issn: 1424-8220
+
