@@ -109,7 +109,7 @@ visualisation.
   centrelineComparasion/       Local generated results
 3_centrelineCalculation/
   maximalDisks/                Maximal-disk implementation and main driver
-8_buildDummyLanelist/          Synthetic lane-boundary generators
+8_buildDummyLanelist/          Synthetic lane-boundary generator
 ```
 
 Directories for Lanelet2 extraction and lane reconstruction are intentionally
