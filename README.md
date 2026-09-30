@@ -22,10 +22,6 @@ maximal-disk lane-centerline extraction method described in:
 > Approach Using Maximal Disks," *Sensors*, vol. 25, no. 8, article 2571,
 > 2025. https://doi.org/10.3390/s25082571
 
-This repository is intended to be published as a Hugging Face **Dataset**
-repository containing research code and a small, fully synthetic lane-boundary
-dataset. It is not a trained model and not an executable Hugging Face Space.
-
 ## Important data notice
 
 The real-world maps used in the paper originated from the
@@ -44,10 +40,6 @@ redistribution of the datasets or modified versions. Consequently:
 The only distributable demonstration data in this repository is
 `0_data/LaneletData/laneList_dummy.mat`. It is generated synthetically by the
 scripts in `8_buildDummyLanelist` and contains no inD or rounD map data.
-
-Before publishing, use Git to stage the repository and verify that no
-`locn1`-`locn5` files are tracked. Do not upload the local folder with a tool
-that ignores `.gitignore`.
 
 ## Scope
 
@@ -74,7 +66,6 @@ algorithmRoot = fullfile(repoRoot, ...
     '3_centrelineCalculation', 'maximalDisks');
 
 addpath(genpath(algorithmRoot));
-rmpath(genpath(fullfile(algorithmRoot, 'notUsed')));
 
 inputFile = fullfile(repoRoot, '0_data', 'LaneletData', ...
     'laneList_dummy.mat');
@@ -126,9 +117,6 @@ Requirements:
 - sparse boundaries are supported, but severely incomplete or incorrectly
   ordered boundaries can produce invalid centerlines.
 
-The included synthetic file contains 36 lanes and only the four boundary
-coordinate fields shown above.
-
 ## Output format
 
 The primary output is the input `laneList` augmented with:
@@ -148,8 +136,8 @@ visualisation.
 
 ```text
 0_data/
-  LaneletData/                 Synthetic public input and ignored local data
-  centrelineComparasion/       Local generated results; real-data results ignored
+  LaneletData/                 Synthetic public input
+  centrelineComparasion/       Local generated results
 3_centrelineCalculation/
   maximalDisks/                Maximal-disk implementation and main driver
 8_buildDummyLanelist/          Synthetic lane-boundary generators
@@ -182,12 +170,11 @@ discretised into a centerline with a user-defined spacing.
 
 ## Synthetic data generation
 
-The synthetic `laneList_dummy.mat` can be regenerated using either:
+The synthetic `laneList_dummy.mat` can be regenerated using:
 
 - `8_buildDummyLanelist/main_buildDummyLanelist_LHS.m`
-- `8_buildDummyLanelist/main_buildDummyLanelist_Rand.m`
 
-These scripts generate parametrised curved and straight lane boundaries with
+This script generates parametrised curved and straight lane boundaries with
 different widths, radii, intersection angles, and sampling densities.
 
 ## Third-party software
@@ -204,9 +191,6 @@ directory.
 - Public release version: **1.0.0**
 - Chenhui Yin
 - Marco Cecotti
-- Daniel J. Auger
-- Abbas Fotouhi
-- Haobin Jiang
 
 ## Citation
 
