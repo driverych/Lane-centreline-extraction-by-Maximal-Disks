@@ -38,7 +38,7 @@ function plotSingleCircle(center,radius,centreColor,edgeColor)
     sz = 1.5;
     c = edgeColor;
     mkr = ".";
-    scatter(xTemp,yTemp,sz,c,mkr,'LineWidth',1);
+    % scatter(xTemp,yTemp,sz,c,mkr,'LineWidth',1);
     plot(xTemp,yTemp,'k','LineWidth',0.5);
     
 %     grey = '#7F7F7F';

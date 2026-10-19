@@ -72,14 +72,14 @@ for idxBorderSeg = 1:numBorderSegs
     [strtPt_borderSeg, vctr_borderSeg] = calculateLineFrom2Points(strtPt_borderSeg',endPt_borderSeg');
 
     % Calculate circle centres in the ligature
-    % CC_lgt = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_Case50,CC_Case60,proj_CC2Tgt_1_Case50,lgthBorderSeg); % gpt ver: Original ligature centre-only generation kept for reference.
-    [CC_lgt,radius_lgt] = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_Case50,CC_Case60,proj_CC2Tgt_1_Case50,lgthBorderSeg); % TODO gpt ver: Generate ligature centres and radii for interference filtering.
-    [CC_lgt,radius_lgt] = filterLigatureCirclesByBorderInterference(CC_lgt,radius_lgt,lanePoints,borderSegIdx); % TODO gpt ver: Remove ligature circles that interfere with lane borders.
+    % CC_lgt = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_Case50,CC_Case60,proj_CC2Tgt_1_Case50,lgthBorderSeg); 
+    [CC_lgt,radius_lgt] = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_Case50,CC_Case60,proj_CC2Tgt_1_Case50,lgthBorderSeg); 
+    [CC_lgt,radius_lgt] = filterLigatureCirclesByBorderInterference(CC_lgt,radius_lgt,lanePoints,borderSegIdx); 
     % The number of points for ligature
     numPts = size(CC_lgt,1);
     if numPts > 0
-        % circlesConnected_updated = [circlesConnected_updated;[CC_lgt(1:end,:),zeros(numPts,15)]]; % gpt ver: Original insertion without radius/interference filtering kept for reference.
-        circlesConnected_updated = [circlesConnected_updated;[CC_lgt(1:end,:),radius_lgt(1:end,:),zeros(numPts,14)]]; % TODO gpt ver: Preserve radius and append only validated ligature circles.
+        % circlesConnected_updated = [circlesConnected_updated;[CC_lgt(1:end,:),zeros(numPts,15)]]; 
+        circlesConnected_updated = [circlesConnected_updated;[CC_lgt(1:end,:),radius_lgt(1:end,:),zeros(numPts,14)]]; 
     end        
 end
 

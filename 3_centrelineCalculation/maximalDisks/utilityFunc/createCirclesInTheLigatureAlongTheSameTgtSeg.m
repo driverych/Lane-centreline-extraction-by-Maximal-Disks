@@ -1,8 +1,8 @@
 % This solution is from Marco
 
 
-% function CC_lgt = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_strt,CC_end,passedPt,lgthBorderSeg) % gpt ver: Original centre-only output kept for reference.
-function [CC_lgt,radius_lgt] = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_strt,CC_end,passedPt,lgthBorderSeg) % TODO gpt ver: Return radii for ligature interference validation.
+% function CC_lgt = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_strt,CC_end,passedPt,lgthBorderSeg) % Original centre-only output kept for reference.
+function [CC_lgt,radius_lgt] = createCirclesInTheLigatureAlongTheSameTgtSeg(strtPt_borderSeg,vctr_borderSeg,CC_strt,CC_end,passedPt,lgthBorderSeg) % Return radii for ligature interference validation.
 
 % the projection from the circle centre to the start point of the border segment
 k1 = (vctr_borderSeg(1)*CC_strt(1) + vctr_borderSeg(2)*CC_strt(2) - vctr_borderSeg(1)*strtPt_borderSeg(1) - vctr_borderSeg(2)*strtPt_borderSeg(2))/(vctr_borderSeg(1)^2 + vctr_borderSeg(2)^2);
@@ -11,7 +11,7 @@ k2 = (vctr_borderSeg(1)*CC_end(1) + vctr_borderSeg(2)*CC_end(2) - vctr_borderSeg
 % If the k1 and k2 exceed the length of the border segment
 if k1 >= lgthBorderSeg
     CC_lgt = [];
-    radius_lgt = []; % TODO gpt ver: Keep output shape consistent when no ligature circle is generated.
+    radius_lgt = []; % Keep output shape consistent when no ligature circle is generated.
     return
 else
     k2 = min(k2,lgthBorderSeg);
@@ -19,7 +19,7 @@ end
 
 if k2 < 0
     CC_lgt = [];
-    radius_lgt = []; % TODO gpt ver: Keep output shape consistent when no ligature circle is generated.
+    radius_lgt = []; % Keep output shape consistent when no ligature circle is generated.
     return
 else
     k1 = max(k1,0);
@@ -54,6 +54,6 @@ end
 % line(p01,p02,'LineStyle',':','Marker','+');
 
 CC_lgt = [p01',p02'];
-radius_lgt = sqrt((CC_lgt(:,1) - passedPt(1)).^2 + (CC_lgt(:,2) - passedPt(2)).^2); % TODO gpt ver: Ligature circles pass through passedPt, so this restores their radii.
+radius_lgt = sqrt((CC_lgt(:,1) - passedPt(1)).^2 + (CC_lgt(:,2) - passedPt(2)).^2); % Ligature circles pass through passedPt, so this restores their radii.
 
 end

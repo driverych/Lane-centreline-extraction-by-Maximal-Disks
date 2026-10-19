@@ -19,12 +19,13 @@ Desktop.ini
 .idea/
 
 # Real-world data derived from restricted inD/rounD map sources.
-# These files may remain in a private working copy but must never be committed
-# to the public repository without explicit redistribution permission.
-/0_data/LaneletData/laneList_locn*.mat
 /0_data/LaneletData/alignedLanelet_locn*.mat
 /0_data/LaneletData/laneList_LaneletID_locn*.mat
+/0_data/LaneletData/laneList_locn*.mat
+/0_data/LaneletData/originalLanelet_locn*.mat
+/0_data/LaneletData/originalMultiPoly_locn*.mat
 /0_data/centrelineComparasion/*locn*.mat
+/0_data/mapData/location*.mat
 
 # Local result and figure exports
 /results/

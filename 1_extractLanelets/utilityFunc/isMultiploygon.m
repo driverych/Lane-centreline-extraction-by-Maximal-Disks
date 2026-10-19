@@ -1,0 +1,57 @@
+% isLanelet - Judge if a relation is actually a lanelet. 
+%             Lanelets are stored as 'relation' in maps
+%
+% Syntax:  
+%    [flag_isLanelet,ID_lanelet,cntrLanelet_out] = 
+%              isLanelet(mapData,idx_relation,relationType,cntrLanelet_in)
+%
+% Input:
+%    mapData - the imported Lanelet2 map data
+%    idxRelation - the index of the relation in the Lanelet2 map data
+%    relationType - the type of the relation (lanelet,multipolygon etc.)
+%    cntrLanelet_in - the number of the lanelets when imported
+%
+% Output:
+%    flag_isLanelet - if flag_isLanelet == 1, then it is a lanelet
+%    ID_lanelet - the id of the newly found lanelet
+%    cntrLanelet_out - the number of the lanelets when exported
+%
+% Other m-files required: none
+% Subfunctions: none
+% MAT-files required: none
+% Abbreviation:
+% info -> information
+% cntr -> counter
+% num -> number
+% idx -> index
+% id -> identification
+
+function [flag_isMultipoly,ID_multipoly,cntrMultipoly_out] = isMultiploygon(mapData,idxReln,relnType,...
+   cntrMultipoly_in)
+
+    if strcmp('relation',relnType)
+
+        % Identify the relation by its type tag, regardless of tag order.
+        tagInfo_last = getXmlTagValue(mapData.Children(idxReln),'type');
+        if strcmp('multipolygon',tagInfo_last)
+            % If it is a lanelet, store multipolygon ID
+            multipolygon_ID = getXmlAttr(mapData.Children(idxReln),'id');
+            ID_multipoly = str2double(multipolygon_ID);
+            cntrMultipoly_out = cntrMultipoly_in + 1;
+            flag_isMultipoly = 1;
+        else
+            fprintf('%s,and its ID in Struct is %d\n\n','It is a relation but not a multipolygon',idxReln);
+            % The ID and counter will not be stored in the main function
+            ID_multipoly = 999999;
+            cntrMultipoly_out = cntrMultipoly_in;
+            flag_isMultipoly = 0;
+        end
+    else
+        fprintf('%s,and its ID in Struct is %d\n\n','A non_relation is found',idxReln);
+        % The ID and counter will not be stored in the main function
+        ID_multipoly = 999999;
+        cntrMultipoly_out = cntrMultipoly_in;
+        flag_isMultipoly = 0;
+    end
+
+end

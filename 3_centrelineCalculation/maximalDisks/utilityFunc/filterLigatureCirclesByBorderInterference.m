@@ -1,7 +1,7 @@
 % filterLigatureCirclesByBorderInterference - Remove ligature circles that
 % interfere with lane border segments.
 %
-% TODO gpt ver: This validation is used after ligature compensation because
+% This validation is used after ligature compensation because
 % the generated compensation circles do not pass through the original
 % extractInscribedCircles_* interference checks.
 
@@ -16,7 +16,7 @@ end
 
 radius_lgt = radius_lgt(:);
 keepFlags = true(size(CC_lgt,1),1);
-epsilon = 0.00001; % TODO gpt ver: Match the tolerance style used by nearby circle-border interference checks.
+epsilon = 0.00001; % Match the tolerance style used by nearby circle-border interference checks.
 
 leftPoints = lanePoints(lanePoints(:,1)>0,:);
 rightPoints = lanePoints(lanePoints(:,1)<0,:);
@@ -26,14 +26,14 @@ for idxLeftPoint = 1:size(leftPoints,1)-1
     segIdx = leftPoints(idxLeftPoint,1);
     pointS = leftPoints(idxLeftPoint,2:3);
     pointE = leftPoints(idxLeftPoint+1,2:3);
-    borderSegments = [borderSegments;segIdx,pointS,pointE]; % TODO gpt ver: Store left border segment for ligature interference filtering.
+    borderSegments = [borderSegments;segIdx,pointS,pointE]; % Store left border segment for ligature interference filtering.
 end
 
 for idxRightPoint = 1:size(rightPoints,1)-1
     segIdx = rightPoints(idxRightPoint,1);
     pointS = rightPoints(idxRightPoint,2:3);
     pointE = rightPoints(idxRightPoint+1,2:3);
-    borderSegments = [borderSegments;segIdx,pointS,pointE]; % TODO gpt ver: Store right border segment for ligature interference filtering.
+    borderSegments = [borderSegments;segIdx,pointS,pointE]; % Store right border segment for ligature interference filtering.
 end
 
 for idxCircle = 1:size(CC_lgt,1)
@@ -41,7 +41,7 @@ for idxCircle = 1:size(CC_lgt,1)
     radius = radius_lgt(idxCircle);
 
     if radius <= epsilon || any(isnan(center)) || isnan(radius)
-        keepFlags(idxCircle) = false; % TODO gpt ver: Drop invalid compensation circles before they become centreline points.
+        keepFlags(idxCircle) = false; % Drop invalid compensation circles before they become centreline points.
         continue
     end
 
@@ -59,7 +59,7 @@ for idxCircle = 1:size(CC_lgt,1)
         isStartPointInCircle = distStart < radius - epsilon;
         isEndPointInCircle = distEnd < radius - epsilon;
         if isStartPointInCircle || isEndPointInCircle
-            keepFlags(idxCircle) = false; % TODO gpt ver: Remove circles containing any non-tangent border endpoint.
+            keepFlags(idxCircle) = false; % Remove circles containing any non-tangent border endpoint.
             break
         end
 
@@ -75,7 +75,7 @@ for idxCircle = 1:size(CC_lgt,1)
             (center(2) - pointE(2))*(pointS(2) - pointE(2));
 
         if angleStart > 0 && angleEnd > 0
-            keepFlags(idxCircle) = false; % TODO gpt ver: Remove circles crossing any non-tangent border segment.
+            keepFlags(idxCircle) = false; % Remove circles crossing any non-tangent border segment.
             break
         end
     end

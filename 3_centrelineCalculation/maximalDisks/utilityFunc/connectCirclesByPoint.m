@@ -92,7 +92,8 @@ else
     % If the indexes of the first row are duplicated, the second sort is
     % needed
     % Extract the unique index
-    idxs_unique = unique(circlesConnected_temp(:,1),'sorted');
+    % idxs_unique = unique(circlesConnected_temp(:,1),'sorted');
+    idxs_unique = unique(indexContainer(:,1),'sorted');
     num_uniIdxs = size(idxs_unique,1);
     if num_uniIdxs == numCircles_point % No indexes are duplicated
         circlesConnected = [circlesConnected;circlesConnected_temp];
@@ -109,15 +110,19 @@ else
             % Get one unique index
             uniIdx = idxs_unique(idx_uniIdxs,1);
             % Extract the rows with the same index
-            idxs_same = indexContainer(indexContainer(:,1) == uniIdx);
-            circles_sameIdx = circlesConnected_temp(indexContainer(:,1) == uniIdx);
+            % idxs_same = indexContainer(indexContainer(:,1) == uniIdx);
+            idxs_same = indexContainer(indexContainer(:,1) == uniIdx,:);
+            % circles_sameIdx = circlesConnected_temp(indexContainer(:,1) == uniIdx);
+            circles_sameIdx = circlesConnected_temp(indexContainer(:,1) == uniIdx,:);
             num_sameIdxs = size(idxs_same,1);
             
             if num_sameIdxs > 1 % This index is duplicated
                 % Sort according to the second row
                 [~,idx_second_temp] = sort(idxs_same(:,2),'ascend');
+                % circles_uniIdx = ...
+                %    [circles_uniIdx;circlesConnected_temp(idx_second_temp)];
                 circles_uniIdx = ...
-                    [circles_uniIdx;circlesConnected_temp(idx_second_temp)];
+                    [circles_uniIdx;circles_sameIdx(idx_second_temp,:)];
             else % No need to sort
                 circles_uniIdx = ...
                     [circles_uniIdx;circles_sameIdx];
@@ -125,7 +130,8 @@ else
         end
         % Store the sorted circles
         circlesConnected = [circlesConnected;circles_uniIdx];
-        numCircles = numCircles + numCircles;
+        % numCircles = numCircles + numCircles;
+        numCircles = numCircles + size(circles_uniIdx,1);
     end
 end % if numCircles_point == 1
         
