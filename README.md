@@ -46,6 +46,14 @@ reads those elements into MATLAB structures; installing the C++ Lanelet2 library
 is not required for this workflow. Ordinary OSM road maps do not necessarily
 contain the lanelet relations required by the parser.
 
+Users can also create their own Lanelet2 maps using JOSM. Lanelet2 styles and
+tagging presets are available in
+[Lanelet2 / lanelet2_maps / josm](https://github.com/fzi-forschungszentrum-informatik/Lanelet2/tree/master/lanelet2_maps/josm).
+Add `lanelets.mapcss` and `lines.mapcss` to JOSM's Map Paint Styles, and add
+`laneletpresets.xml` to Tagging Presets. Extract `style_images.zip` to provide
+the associated traffic-sign images. For detailed setup steps, see the
+[official instructions](https://fzi-forschungszentrum-informatik.github.io/Lanelet2/lanelet2_maps/).
+
 This project supports extracting lanelets from the Lanelet2 maps supplied with
 the inD and rounD datasets. Before processing those maps, users need to review
 and, where necessary, correct the source maps. Required corrections can include
