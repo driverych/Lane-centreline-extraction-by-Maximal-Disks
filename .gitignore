@@ -25,7 +25,7 @@ Desktop.ini
 /0_data/LaneletData/originalLanelet_locn*.mat
 /0_data/LaneletData/originalMultiPoly_locn*.mat
 /0_data/centrelineComparasion/*locn*.mat
-/0_data/mapData/location*.mat
+/0_data/mapData/location*.osm
 
 # Local result and figure exports
 /results/
